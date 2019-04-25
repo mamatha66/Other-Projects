@@ -10,9 +10,8 @@ def get4Neighbors(i,j,mat):
     return nbr
 
 
-#Generates a drain_possibility matrix where 1's denote water storing capability and 0's otherwise
-def checkDrainPossibility(platform):
-    
+# Generates a drain_possibility matrix where 1's denote water storing capability and 0's otherwise
+def checkDrainPossibility(platform): 
     n,m = platform.shape
     platform1 = np.empty([n,m], dtype=int)
     platform1[:] = platform[:] # Copying only values of the given matrix to another without of the reference. 
@@ -115,7 +114,6 @@ def checkDrainPossibility(platform):
 
 
 def WaterStoredInPlatform(platform):
-    
     n,m = platform.shape
     platform1, platform1_d = checkDrainPossibility(platform)
 
