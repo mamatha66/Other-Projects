@@ -18,9 +18,9 @@ def checkDrainPossibility(platform):
                                # This will not modified the original matrix when any changes are made on the copied matrix.
     platform1_d = np.ones([n,m], dtype=int) # This is a drain_possibility matrix
     
-    un, cnt = np.unique(platform1, return_counts =True, axis=None)
-    maximum = un[cnt.argmax()]
-    if(maximum != un[len(un)-1]):
+    temp1, temp = np.unique(platform1, return_counts =True, axis=None)
+    maximum = temp1[temp.argmax()]
+    if(maximum != temp1[len(temp1)-1]):
         for i in range(0,n):
             for j in range(0,m):
                 if(platform1[i][j]>maximum):
