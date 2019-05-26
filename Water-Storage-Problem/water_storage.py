@@ -11,22 +11,11 @@ def get4Neighbors(i,j,mat):
 
 
 # Generates a drain_possibility matrix where 1's denote water storing capability and 0's otherwise
-def checkDrainPossibility(platform): 
-    n,m = platform.shape
-    platform1 = np.empty([n,m], dtype=int)
-    platform1[:] = platform[:] # Copying only values of the given matrix to another without of the reference. 
-                               # This will not modified the original matrix when any changes are made on the copied matrix.
-    platform1_d = np.ones([n,m], dtype=int) # This is a drain_possibility matrix
-    
-    temp1, temp = np.unique(platform1, return_counts =True, axis=None)
-    maximum = temp1[temp.argmax()]
-    if(maximum != temp1[len(temp1)-1]):
-        for i in range(0,n):
-            for j in range(0,m):
-                if(platform1[i][j]>maximum):
-                    platform1[i][j]= maximum   
+def checkDrainPossibility(platform1): 
+    n,m = platform1.shape
+    platform1_d = np.ones([n,m], dtype=int) # This is a drain_possibility matrix  
 
-    print("Smoothened platform after cutting off extra elevations")
+    print("Given Platform")
     print(platform1)
          
     diff = np.empty(8) # empty list to hold neighbors of the given matrix
@@ -108,7 +97,7 @@ def checkDrainPossibility(platform):
                 
     recheck()
     print('')
-    print('Dummy matrix that shows water storage possibility of each position. 1: Storage possible; 2: Drain')
+    print('Dummy matrix that shows water storage possibility of each position. 1: Storage possible; 0: Drain')
     print(platform1_d)
     return platform1, platform1_d
 
